@@ -12,6 +12,8 @@
 		223C4DF8209C67DF004DEFB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223C4DF6209C67DF004DEFB4 /* Main.storyboard */; };
 		223C4DFA209C67DF004DEFB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 223C4DF9209C67DF004DEFB4 /* Assets.xcassets */; };
 		223C4DFD209C67DF004DEFB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223C4DFB209C67DF004DEFB4 /* LaunchScreen.storyboard */; };
+		22F4BFC6209DA5C8001E9CCF /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22F4BFC5209DA5C8001E9CCF /* ThirstySoftRegular.otf */; };
+		22F4BFC8209DA5D1001E9CCF /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22F4BFC7209DA5D1001E9CCF /* Delm-Medium.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		223C4DF9209C67DF004DEFB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		223C4DFC209C67DF004DEFB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		223C4DFE209C67DF004DEFB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22F4BFC5209DA5C8001E9CCF /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ThirstySoftRegular.otf; path = ../../../../Downloads/ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		22F4BFC7209DA5D1001E9CCF /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Delm-Medium.otf"; path = "../../../../Downloads/Delm-Medium.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				223C4DF6209C67DF004DEFB4 /* Main.storyboard */,
 				223C4DF9209C67DF004DEFB4 /* Assets.xcassets */,
 				223C4DFB209C67DF004DEFB4 /* LaunchScreen.storyboard */,
+				22F4BFC7209DA5D1001E9CCF /* Delm-Medium.otf */,
+				22F4BFC5209DA5C8001E9CCF /* ThirstySoftRegular.otf */,
 				223C4DFE209C67DF004DEFB4 /* Info.plist */,
 			);
 			path = Instagrid;
@@ -96,6 +102,7 @@
 				TargetAttributes = {
 					223C4DEE209C67DF004DEFB4 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -124,7 +131,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				223C4DFD209C67DF004DEFB4 /* LaunchScreen.storyboard in Resources */,
+				22F4BFC8209DA5D1001E9CCF /* Delm-Medium.otf in Resources */,
 				223C4DFA209C67DF004DEFB4 /* Assets.xcassets in Resources */,
+				22F4BFC6209DA5C8001E9CCF /* ThirstySoftRegular.otf in Resources */,
 				223C4DF8209C67DF004DEFB4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
