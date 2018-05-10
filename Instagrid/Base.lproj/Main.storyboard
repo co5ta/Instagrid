@@ -44,13 +44,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99b-hP-xt8">
-                                <rect key="frame" x="38" y="181" width="299" height="305.5"/>
+                                <rect key="frame" x="38" y="181" width="299" height="305"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Nr-ec-Lna">
-                                        <rect key="frame" x="15" y="15" width="127" height="127.5"/>
+                                        <rect key="frame" x="15" y="15.5" width="127" height="127"/>
                                         <subviews>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="plus blue" translatesAutoresizingMaskIntoConstraints="NO" id="tXL-TK-xFv">
-                                                <rect key="frame" x="39.5" y="40.5" width="48" height="48"/>
+                                                <rect key="frame" x="40" y="39.5" width="48" height="48"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,10 +61,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGc-u7-sen">
-                                        <rect key="frame" x="157" y="15" width="127" height="127.5"/>
+                                        <rect key="frame" x="157" y="15.5" width="127" height="127"/>
                                         <subviews>
                                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="plus blue" translatesAutoresizingMaskIntoConstraints="NO" id="eG2-A2-MhF">
-                                                <rect key="frame" x="40" y="40.5" width="48" height="48"/>
+                                                <rect key="frame" x="39.5" y="39.5" width="48" height="48"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
