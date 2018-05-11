@@ -17,7 +17,31 @@ class ViewController: UIViewController {
     @IBOutlet weak var FourSquareButton: UIButton!
     
     @IBAction func changeLayout(_ sender: UIButton) {
-        switch sender {
+        unselectButtons()
+        activateSelectedLayout(sender)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        activateSelectedLayout(FourSquareButton)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    /// Activate button tapped to selected state and the others to unselected
+    private func unselectButtons() {
+        for button in [OneRectangleTwoSquareButton, TwoSquareOneRectangleButton, FourSquareButton] {
+            button?.isSelected = false
+        }
+    }
+    
+    /// Give to GridView the layout selected
+    private func activateSelectedLayout(_ buttonTapped: UIButton) {
+        buttonTapped.isSelected = true
+        switch buttonTapped {
         case OneRectangleTwoSquareButton:
             gridView.layout = .oneRectangleTwoSquare
         case TwoSquareOneRectangleButton:
@@ -28,17 +52,6 @@ class ViewController: UIViewController {
             break
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 

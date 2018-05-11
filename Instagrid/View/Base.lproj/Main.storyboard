@@ -53,7 +53,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="127.5" height="127"/>
                                                 <subviews>
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="plus blue" translatesAutoresizingMaskIntoConstraints="NO" id="mJN-iT-MO5">
-                                                        <rect key="frame" x="39" y="39" width="48" height="48"/>
+                                                        <rect key="frame" x="39.5" y="39.5" width="48" height="48"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,7 +78,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="126.5" height="127"/>
                                                 <subviews>
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="plus blue" translatesAutoresizingMaskIntoConstraints="NO" id="vSY-fS-wAu">
-                                                        <rect key="frame" x="39" y="39" width="48" height="48"/>
+                                                        <rect key="frame" x="39.5" y="39.5" width="48" height="48"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -102,14 +102,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g21-4g-zuc">
                                                 <rect key="frame" x="0.0" y="0.0" width="127.5" height="127"/>
                                                 <subviews>
-                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="plus blue" translatesAutoresizingMaskIntoConstraints="NO" id="VpK-aa-11x">
-                                                        <rect key="frame" x="39" y="39" width="48" height="48"/>
+                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="plus blue" translatesAutoresizingMaskIntoConstraints="NO" id="bb3-ZJ-PEH">
+                                                        <rect key="frame" x="40" y="40" width="48" height="48"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="VpK-aa-11x" firstAttribute="centerY" secondItem="g21-4g-zuc" secondAttribute="centerY" id="bTv-Uy-qnr"/>
-                                                    <constraint firstItem="VpK-aa-11x" firstAttribute="centerX" secondItem="g21-4g-zuc" secondAttribute="centerX" id="pKP-aa-WpM"/>
+                                                    <constraint firstItem="bb3-ZJ-PEH" firstAttribute="centerX" secondItem="g21-4g-zuc" secondAttribute="centerX" id="HPZ-90-rQ4"/>
+                                                    <constraint firstItem="bb3-ZJ-PEH" firstAttribute="centerY" secondItem="g21-4g-zuc" secondAttribute="centerY" id="g8T-st-7Mk"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -128,7 +128,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="126.5" height="127"/>
                                                 <subviews>
                                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="plus blue" translatesAutoresizingMaskIntoConstraints="NO" id="gc6-Xw-ce1">
-                                                        <rect key="frame" x="39" y="39" width="48" height="48"/>
+                                                        <rect key="frame" x="39.5" y="39.5" width="48" height="48"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -192,23 +192,26 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtA-h9-rdf" userLabel="Layout 1">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtA-h9-rdf" userLabel="Layout 1">
                                 <rect key="frame" x="46.5" y="565" width="80" height="80"/>
                                 <state key="normal" backgroundImage="Layout 1"/>
+                                <state key="selected" image="Selected"/>
                                 <connections>
                                     <action selector="changeLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wer-tp-evQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QT1-Pj-xos" userLabel="Layout 2">
                                 <rect key="frame" x="147.5" y="565" width="80" height="80"/>
-                                <state key="normal" image="Layout 2"/>
+                                <state key="normal" backgroundImage="Layout 2"/>
+                                <state key="selected" image="Selected"/>
                                 <connections>
                                     <action selector="changeLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="26b-Ln-tRe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Naa-z2-Xof" userLabel="Layout 3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Naa-z2-Xof" userLabel="Layout 3">
                                 <rect key="frame" x="248.5" y="565" width="80" height="80"/>
                                 <state key="normal" backgroundImage="Layout 3"/>
+                                <state key="selected" image="Selected"/>
                                 <connections>
                                     <action selector="changeLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pra-U4-qTo"/>
                                 </connections>
@@ -251,6 +254,7 @@
         <image name="Layout 1" width="80" height="80"/>
         <image name="Layout 2" width="80" height="80"/>
         <image name="Layout 3" width="80" height="80"/>
+        <image name="Selected" width="80" height="80"/>
         <image name="plus blue" width="48" height="48"/>
         <image name="swipe direction" width="15" height="10"/>
     </resources>

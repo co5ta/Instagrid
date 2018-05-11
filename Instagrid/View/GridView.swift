@@ -47,7 +47,7 @@ class GridView: UIView {
             }
         }
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: [], animations: layoutAnimation, completion: nil)
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: [], animations: layoutAnimation, completion: nil)
     }
     
     /// Move an image container to a new position
@@ -67,6 +67,12 @@ class GridView: UIView {
             case .normal:
                 container.frame.size = CGSize(width: (reference.frame.width), height: reference.frame.height)
             }
+            
+            /*
+            if let subview = container.subviews.first {
+                subview.frame.size = container.frame.size
+            }
+            */
         }
     }
     
