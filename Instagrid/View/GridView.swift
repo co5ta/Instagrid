@@ -48,6 +48,8 @@ class GridView: UIView {
         }
         
         UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: [], animations: layoutAnimation, completion: nil)
+        
+        print(Image3CenterXConstraint.constant)
     }
     
     /// Move an image container to a new position
@@ -67,12 +69,6 @@ class GridView: UIView {
             case .normal:
                 container.frame.size = CGSize(width: (reference.frame.width), height: reference.frame.height)
             }
-            
-            /*
-            if let subview = container.subviews.first {
-                subview.frame.size = container.frame.size
-            }
-            */
         }
     }
     
@@ -87,6 +83,9 @@ class GridView: UIView {
         
         resize(container: containerImage3, to: .wide)
         resize(container: containerImage1, to: .normal)
+        
+        Image3CenterXConstraint.constant = (containerImage3.frame.width + 15) / 4
+        Image1CenterXConstraint.constant = 0
     }
     
     /// Switch the grid view to the twoSquareOneRectangle layout
@@ -100,6 +99,9 @@ class GridView: UIView {
         
         resize(container: containerImage3, to: .normal)
         resize(container: containerImage1, to: .wide)
+        
+        Image3CenterXConstraint.constant = 0
+        Image1CenterXConstraint.constant = (containerImage1.frame.width + 15) / 4
     }
     
     /// Switch the grid view to the FourSquare layout
@@ -113,6 +115,9 @@ class GridView: UIView {
         
         resize(container: containerImage1, to: .normal)
         resize(container: containerImage3, to: .normal)
+        
+        Image1CenterXConstraint.constant = 0
+        Image3CenterXConstraint.constant = 0
     }
     
     /// Default positions of image containers
@@ -127,5 +132,6 @@ class GridView: UIView {
     @IBOutlet weak var containerImage3: UIView!
     @IBOutlet weak var containerImage4: UIView!
 
-    
+    @IBOutlet weak var Image1CenterXConstraint: NSLayoutConstraint!
+    @IBOutlet weak var Image3CenterXConstraint: NSLayoutConstraint!
 }

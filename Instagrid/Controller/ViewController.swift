@@ -23,7 +23,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activateSelectedLayout(FourSquareButton)
     }
 
     override func didReceiveMemoryWarning() {
