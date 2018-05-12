@@ -35,7 +35,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9N-2S-KaI">
-                                <rect key="frame" x="107.5" y="144" width="160.5" height="29"/>
+                                <rect key="frame" x="108" y="144" width="160.5" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="Rf5-9n-EIG"/>
                                 </constraints>
@@ -184,7 +184,7 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Va-jO-E81">
-                                <rect key="frame" x="126" y="28" width="123" height="38"/>
+                                <rect key="frame" x="126.5" y="28" width="123" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="123" id="A2u-B9-v20"/>
                                 </constraints>
