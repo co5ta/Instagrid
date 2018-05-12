@@ -10,12 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    /// The GridView contains images to assemble
     @IBOutlet weak var gridView: GridView!
     
+    /// Buttons to choose the GridView layout
     @IBOutlet weak var OneRectangleTwoSquareButton: UIButton!
     @IBOutlet weak var TwoSquareOneRectangleButton: UIButton!
     @IBOutlet weak var FourSquareButton: UIButton!
     
+    
+    /// Enable the layout change
     @IBAction func changeLayout(_ sender: UIButton) {
         unselectButtons()
         activateSelectedLayout(sender)
@@ -23,6 +27,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        TwoSquareOneRectangleButton.isSelected = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +45,7 @@ class ViewController: UIViewController {
     /// Give to GridView the layout selected
     private func activateSelectedLayout(_ buttonTapped: UIButton) {
         buttonTapped.isSelected = true
+        
         switch buttonTapped {
         case OneRectangleTwoSquareButton:
             gridView.layout = .oneRectangleTwoSquare

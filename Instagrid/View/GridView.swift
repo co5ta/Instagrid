@@ -47,9 +47,7 @@ class GridView: UIView {
             }
         }
         
-        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: [], animations: layoutAnimation, completion: nil)
-        
-        print(Image3CenterXConstraint.constant)
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.7, options: [], animations: layoutAnimation, completion: nil)
     }
     
     /// Move an image container to a new position
@@ -60,64 +58,40 @@ class GridView: UIView {
         }
     }
     
-    /// Resize an image container
-    private func resize(container: UIView, to size: ContainerSize) {
-        if let reference = container.superview {
-            switch size {
-            case .wide:
-                container.frame.size = CGSize(width: (reference.frame.width * 2) + 15, height: reference.frame.height)
-            case .normal:
-                container.frame.size = CGSize(width: (reference.frame.width), height: reference.frame.height)
-            }
-        }
-    }
-    
     /// Switch the grid view to the oneRectangleTwoSquare layout
     private func switchToOneRectangleTwoSquare() {
+        containerImage4.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        
         move(container: containerImage3, to: position1)
         move(container: containerImage1, to: position3)
         move(container: containerImage2, to: position4)
         
-        containerImage2.isHidden = false
-        containerImage4.isHidden = true
-        
-        resize(container: containerImage3, to: .wide)
-        resize(container: containerImage1, to: .normal)
-        
-        Image3CenterXConstraint.constant = (containerImage3.frame.width + 15) / 4
-        Image1CenterXConstraint.constant = 0
+        containerImage3.frame.size = position3.frame.size
+        Image3CenterXConstraint.constant = 0
     }
     
     /// Switch the grid view to the twoSquareOneRectangle layout
     private func switchToTwoSquareOneRectangle() {
-        move(container: containerImage3, to: position1)
-        move(container: containerImage1, to: position3)
-        move(container: containerImage2, to: position2)
+        containerImage4.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         
-        containerImage2.isHidden = false
-        containerImage4.isHidden = true
-        
-        resize(container: containerImage3, to: .normal)
-        resize(container: containerImage1, to: .wide)
-        
-        Image3CenterXConstraint.constant = 0
-        Image1CenterXConstraint.constant = (containerImage1.frame.width + 15) / 4
-    }
-    
-    /// Switch the grid view to the FourSquare layout
-    private func switchToFourSquare() {
         move(container: containerImage1, to: position1)
         move(container: containerImage2, to: position2)
         move(container: containerImage3, to: position3)
         
-        containerImage2.isHidden = false
-        containerImage4.isHidden = false
-        
-        resize(container: containerImage1, to: .normal)
-        resize(container: containerImage3, to: .normal)
-        
-        Image1CenterXConstraint.constant = 0
+        containerImage3.frame.size = position3.frame.size
         Image3CenterXConstraint.constant = 0
+    }
+    
+    /// Switch the grid view to the FourSquare layout
+    private func switchToFourSquare() {
+        containerImage4.transform = .identity
+        
+        move(container: containerImage1, to: position1)
+        move(container: containerImage2, to: position2)
+        move(container: containerImage3, to: position3)
+        
+        containerImage3.frame.size = position1.frame.size
+        Image3CenterXConstraint.constant = (position1.frame.width + 15) / -2
     }
     
     /// Default positions of image containers
@@ -132,6 +106,6 @@ class GridView: UIView {
     @IBOutlet weak var containerImage3: UIView!
     @IBOutlet weak var containerImage4: UIView!
 
-    @IBOutlet weak var Image1CenterXConstraint: NSLayoutConstraint!
+    /// Vertical center constraint of the image in containerImage3
     @IBOutlet weak var Image3CenterXConstraint: NSLayoutConstraint!
 }
