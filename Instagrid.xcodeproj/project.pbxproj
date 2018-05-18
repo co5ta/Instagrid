@@ -13,6 +13,8 @@
 		223C4DFA209C67DF004DEFB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 223C4DF9209C67DF004DEFB4 /* Assets.xcassets */; };
 		223C4DFD209C67DF004DEFB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223C4DFB209C67DF004DEFB4 /* LaunchScreen.storyboard */; };
 		22EA1E69209F8691008C3F9C /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA1E68209F8691008C3F9C /* GridView.swift */; };
+		22EA985B20A705D50001E737 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22EA1E63209F3ECA008C3F9C /* ThirstySoftRegular.otf */; };
+		22EA985C20A705D80001E737 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22EA1E62209F3EC5008C3F9C /* Delm-Medium.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,7 +138,7 @@
 					223C4DEE209C67DF004DEFB4 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -164,7 +166,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				223C4DFD209C67DF004DEFB4 /* LaunchScreen.storyboard in Resources */,
+				22EA985C20A705D80001E737 /* Delm-Medium.otf in Resources */,
 				223C4DFA209C67DF004DEFB4 /* Assets.xcassets in Resources */,
+				22EA985B20A705D50001E737 /* ThirstySoftRegular.otf in Resources */,
 				223C4DF8209C67DF004DEFB4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,7 +259,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos11.2;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -305,7 +309,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos11.2;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -315,13 +319,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PQ32JTG8M8;
 				INFOPLIST_FILE = Instagrid/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.co5ta.Instagrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos11.2;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -331,13 +338,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PQ32JTG8M8;
 				INFOPLIST_FILE = Instagrid/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.co5ta.Instagrid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos11.2;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
