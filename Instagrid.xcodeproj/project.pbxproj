@@ -12,6 +12,7 @@
 		223C4DF8209C67DF004DEFB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223C4DF6209C67DF004DEFB4 /* Main.storyboard */; };
 		223C4DFA209C67DF004DEFB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 223C4DF9209C67DF004DEFB4 /* Assets.xcassets */; };
 		223C4DFD209C67DF004DEFB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223C4DFB209C67DF004DEFB4 /* LaunchScreen.storyboard */; };
+		22960E9E20B0735E004CD8F8 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22960E9D20B0735E004CD8F8 /* Grid.swift */; };
 		22EA1E69209F8691008C3F9C /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA1E68209F8691008C3F9C /* GridView.swift */; };
 		22EA985B20A705D50001E737 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22EA1E63209F3ECA008C3F9C /* ThirstySoftRegular.otf */; };
 		22EA985C20A705D80001E737 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 22EA1E62209F3EC5008C3F9C /* Delm-Medium.otf */; };
@@ -25,6 +26,7 @@
 		223C4DF9209C67DF004DEFB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		223C4DFC209C67DF004DEFB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		223C4DFE209C67DF004DEFB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22960E9D20B0735E004CD8F8 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		22EA1E62209F3EC5008C3F9C /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		22EA1E63209F3ECA008C3F9C /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		22EA1E68209F8691008C3F9C /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		22EA1E60209F3E7D008C3F9C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				22960E9D20B0735E004CD8F8 /* Grid.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				223C4DF5209C67DF004DEFB4 /* ViewController.swift in Sources */,
 				223C4DF3209C67DF004DEFB4 /* AppDelegate.swift in Sources */,
 				22EA1E69209F8691008C3F9C /* GridView.swift in Sources */,
+				22960E9E20B0735E004CD8F8 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,10 +260,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos11.2;
+				SDKROOT = iphoneos11.3;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -307,9 +311,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos11.2;
+				SDKROOT = iphoneos11.3;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};

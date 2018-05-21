@@ -29,6 +29,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         for buttonImage in gridImages {
             buttonImage.imageView?.contentMode = .scaleAspectFill
         }
+        
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeGridView(_:)))
+        gridView.addGestureRecognizer(swipeGestureRecognizer)
+        swipeGestureRecognizer.direction = .up
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,18 +74,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         alert.popoverPresentationController?.sourceView = sender
         present(alert, animated: true, completion: nil)
-        
         sender.isSelected = true
     }
     
-    /// Activate button tapped to selected state and the others to unselected
+    /// Swipe up the GridView
+    @objc private func swipeGridView(_ sender: UISwipeGestureRecognizer) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.gridView.transform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height * -1)
+        }) { (success) in
+            if success {
+                self.gridView.transform = .identity
+                self.gridView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+                self.shareGridView()
+            }
+        }
+    }
+    
+    /// Unselected layout switcher buttons
     private func unselectButtons() {
         for button in [OneRectangleTwoSquareButton, TwoSquareOneRectangleButton, FourSquareButton] {
             button?.isSelected = false
         }
     }
     
-    /// Give to GridView the layout selected
+    /// Give the layout selected to the GridView
     private func activateSelectedLayout(_ buttonTapped: UIButton) {
         buttonTapped.isSelected = true
         
@@ -97,19 +113,44 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 
-    /// 
+    /// Put the choosen image to the selected place of the GridView
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         
-        for buttonImage in gridImages {
-            if buttonImage.isSelected == true {
-                buttonImage.setImage(selectedImage, for: .normal)
-                buttonImage.isSelected = false
+        for image in gridImages {
+            if image.isSelected == true {
+                image.setImage(selectedImage, for: .normal)
+                image.isSelected = false
                 break
             }
         }
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func convertGridToImage() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(gridView.bounds.size, true, 0)
+        gridView.drawHierarchy(in: gridView.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
+    private func shareGridView() {
+        guard let imageToShare = convertGridToImage() else {
+            return
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
+        
+        activityViewController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+                self.gridView.transform = .identity
+            }, completion: nil)
+        }
+        
+        present(activityViewController, animated: true, completion: nil)
     }
 }
 
