@@ -24,7 +24,7 @@ class GridView: UIView {
     }
     
     /// Reorganise positions of image containers according to the layout selected
-    private func setLayout(_ layoutSelected: LayoutStyle) {
+    func setLayout(_ layoutSelected: LayoutStyle) {
         var layoutAnimation: () -> ()
         
         switch layout {

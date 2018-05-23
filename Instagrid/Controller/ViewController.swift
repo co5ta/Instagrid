@@ -13,6 +13,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     /// The GridView contains images to assemble
     @IBOutlet weak var gridView: GridView!
     
+    @IBOutlet weak var swipeToShareLabel: UILabel!
+    
     /// Buttons to choose the GridView layout
     @IBOutlet weak var OneRectangleTwoSquareButton: UIButton!
     @IBOutlet weak var TwoSquareOneRectangleButton: UIButton!
@@ -30,9 +32,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             buttonImage.imageView?.contentMode = .scaleAspectFill
         }
         
-        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeGridView(_:)))
-        gridView.addGestureRecognizer(swipeGestureRecognizer)
-        swipeGestureRecognizer.direction = .up
+        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeGridView(_:)))
+        gridView.addGestureRecognizer(swipeUpGestureRecognizer)
+        swipeUpGestureRecognizer.direction = .up
+        
+        let swipeLeftGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeGridView(_:)))
+        gridView.addGestureRecognizer(swipeLeftGestureRecognizer)
+        swipeLeftGestureRecognizer.direction = .left
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,13 +85,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     /// Swipe up the GridView
     @objc private func swipeGridView(_ sender: UISwipeGestureRecognizer) {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.gridView.transform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height * -1)
-        }) { (success) in
-            if success {
-                self.gridView.transform = .identity
-                self.gridView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-                self.shareGridView()
+        var transform: CGAffineTransform? = nil
+        
+        print(sender.direction)
+        print(UIDeviceOrientationIsLandscape(UIDevice.current.orientation))
+        
+        if sender.direction == .left  && UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
+            transform = CGAffineTransform(translationX: UIScreen.main.bounds.width * -1, y: 0)
+            print("landscape")
+        }
+        else if sender.direction == .up && UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+            transform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height * -1)
+            print("portrait")
+        }
+        
+        if transform != nil {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.gridView.transform = transform!
+            }) { (success) in
+                if success {
+                    self.shareGridView()
+                }
             }
         }
     }
@@ -145,12 +165,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let activityViewController = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
         
         activityViewController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+            self.gridView.transform = .identity
+            self.gridView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
                 self.gridView.transform = .identity
             }, completion: nil)
         }
         
         present(activityViewController, animated: true, completion: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: Notification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    func deviceRotated() {
+        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
+            swipeToShareLabel.text = "Swipe left to share"
+        } else {
+            swipeToShareLabel.text = "Swipe up to share"
+        }
+        
+        gridView.setLayout(gridView.layout)
     }
 }
 
