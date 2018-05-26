@@ -23,6 +23,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     /// Images in the GridView
     @IBOutlet var gridImages: [UIButton]!
     
+    var gridViewImageSelected: UIButton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,11 +82,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         alert.popoverPresentationController?.sourceView = sender
         present(alert, animated: true, completion: nil)
-        sender.isSelected = true
+        gridViewImageSelected = sender
     }
     
     /// Swipe up the GridView
     @objc private func swipeGridView(_ sender: UISwipeGestureRecognizer) {
+        guard checkIfGridViewIsFilled() else {
+            let alert = UIAlertController(title: "The grid is not filled", message: "You must fill the grid entirely if you want to share it", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
         var transform: CGAffineTransform? = nil
         
         print(sender.direction)
@@ -110,7 +120,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    /// Unselected layout switcher buttons
+    /// Unselect layout switcher buttons
     private func unselectButtons() {
         for button in [OneRectangleTwoSquareButton, TwoSquareOneRectangleButton, FourSquareButton] {
             button?.isSelected = false
@@ -137,10 +147,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         
-        for image in gridImages {
-            if image.isSelected == true {
-                image.setImage(selectedImage, for: .normal)
-                image.isSelected = false
+        for buttonImage in gridImages {
+            if buttonImage == gridViewImageSelected {
+                buttonImage.setImage(selectedImage, for: .normal)
+                buttonImage.isSelected = true
+                gridViewImageSelected = nil
                 break
             }
         }
@@ -158,6 +169,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     private func shareGridView() {
+        
         guard let imageToShare = convertGridToImage() else {
             return
         }
@@ -192,6 +204,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         gridView.setLayout(gridView.layout)
+    }
+    
+    private func checkIfGridViewIsFilled() -> Bool {
+        let notFilled = false
+        
+        for buttonImage in gridImages {
+            if buttonImage.isSelected == false {
+                guard buttonImage == gridView.image4 else {
+                    return notFilled
+                }
+                guard gridView.layout != .fourSquare else {
+                    return notFilled
+                }
+            }
+        }
+        
+        return true
     }
 }
 
