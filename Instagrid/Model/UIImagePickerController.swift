@@ -6,7 +6,6 @@
 //  Copyright © 2018 Co5ta. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UIImagePickerController
