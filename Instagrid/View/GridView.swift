@@ -23,6 +23,13 @@ class GridView: UIView {
         }
     }
     
+    func addShadow() {
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.5
+        layer.shadowRadius = 4.0
+    }
+    
     /// Reorganise positions of image containers according to the layout selected
     func setLayout(_ layoutSelected: LayoutStyle) {
         var layoutAnimation: () -> ()

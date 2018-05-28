@@ -30,6 +30,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gridView.addShadow()
         activateSelectedLayout(TwoSquareOneRectangleButton)
         
         for buttonImage in gridImages {
