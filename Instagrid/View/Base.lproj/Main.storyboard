@@ -132,7 +132,7 @@
                                 <rect key="frame" x="196.5" y="59" width="299.5" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="suF-hS-MnG" userLabel="Container 4">
-                                        <rect key="frame" x="158" y="157.5" width="126.5" height="127.5"/>
+                                        <rect key="frame" x="157" y="157.5" width="127.5" height="127.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="suF-hS-MnG" secondAttribute="height" multiplier="1:1" id="AVH-Ri-cID"/>
                                         </constraints>
@@ -158,7 +158,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzD-Il-fcw" userLabel="Image4">
-                                        <rect key="frame" x="158" y="157.5" width="126.5" height="127.5"/>
+                                        <rect key="frame" x="157" y="157.5" width="127.5" height="127.5"/>
                                         <color key="backgroundColor" red="0.94107431173324585" green="0.94123536348342896" blue="0.94106405973434448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="plus blue"/>
                                         <connections>

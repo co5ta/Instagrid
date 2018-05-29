@@ -27,6 +27,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     /// Image tapped in the GridView
     var gridViewImageSelected: UIButton?
     
+    /// Return true if the app is displayed in portrait mode
+    var displayIsPortrait: Bool {
+        return UIScreen.main.bounds.height > UIScreen.main.bounds.width ? true: false
+    }
+    
+    /// Verify if all boxes of the GridView are filled
+    var gridViewIsFilled: Bool {
+        let notFilled = false
+        
+        for buttonImage in gridImages {
+            if buttonImage.isSelected == false {
+                guard buttonImage == gridView.image4 else {
+                    return notFilled
+                }
+                guard gridView.layout != .fourSquare else {
+                    return notFilled
+                }
+            }
+        }
+        
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,10 +92,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     /// Change the label indicating the swipe direction to share GridView
     private func updateShareLabel() {
-        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
-            swipeToShareLabel.text = "Swipe left to share"
-        } else {
+        if displayIsPortrait {
             swipeToShareLabel.text = "Swipe up to share"
+        } else {
+            swipeToShareLabel.text = "Swipe left to share"
         }
     }
     
@@ -80,10 +103,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     private func updateEmptyGridImage() {
         for buttonImage in gridImages {
             if buttonImage.isSelected == false {
-                if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
-                    buttonImage.setImage(#imageLiteral(resourceName: "plus gray"), for: .normal)
-                } else {
+                if displayIsPortrait {
                     buttonImage.setImage(#imageLiteral(resourceName: "plus blue"), for: .normal)
+                } else {
+                    buttonImage.setImage(#imageLiteral(resourceName: "plus gray"), for: .normal)
                 }
             }
         }
@@ -137,11 +160,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         alert.popoverPresentationController?.sourceView = sender
-        alert.popoverPresentationController?.sourceRect = CGRect(x: sender.bounds.midX, y: sender.bounds.midY, width: 0, height: 0)
         alert.popoverPresentationController?.permittedArrowDirections = .down
+        alert.popoverPresentationController?.sourceRect = CGRect(x: sender.bounds.midX, y: sender.bounds.midY, width: 0, height: 0)
         
         present(alert, animated: true, completion: nil)
-        
         gridViewImageSelected = sender
     }
     
@@ -173,14 +195,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     /// Swipe the GridView
     @objc private func swipeGridView(_ sender: UISwipeGestureRecognizer) {
-        guard checkIfGridViewIsFilled() else {
-            alertGridNotFilled()
-            return
-        }
         guard let transform = getGridViewTranslationDirection(swipeDirection: sender.direction) else {
             return
         }
-       
+        
+        guard gridViewIsFilled else {
+            alertGridNotFilled()
+            return
+        }
+        
         UIView.animate(withDuration: 0.5, animations: {
             self.gridView.transform = transform
         }) { (success) in
@@ -188,24 +211,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 self.shareGridView()
             }
         }
-    }
-    
-    /// Verify if all boxes of the GridView are filled
-    private func checkIfGridViewIsFilled() -> Bool {
-        let notFilled = false
-        
-        for buttonImage in gridImages {
-            if buttonImage.isSelected == false {
-                guard buttonImage == gridView.image4 else {
-                    return notFilled
-                }
-                guard gridView.layout != .fourSquare else {
-                    return notFilled
-                }
-            }
-        }
-        
-        return true
     }
     
     /// Present an alert indicating the GridView must be filled to be shared
@@ -221,11 +226,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     private func getGridViewTranslationDirection(swipeDirection: UISwipeGestureRecognizerDirection) -> CGAffineTransform? {
         var transform: CGAffineTransform? = nil
         
-        if swipeDirection == .left  && UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
-            transform = CGAffineTransform(translationX: UIScreen.main.bounds.width * -1, y: 0)
-        }
-        else if swipeDirection == .up && UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+        if swipeDirection == .up && displayIsPortrait {
             transform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height * -1)
+        } else if swipeDirection == .left  && !displayIsPortrait {
+            transform = CGAffineTransform(translationX: UIScreen.main.bounds.width * -1, y: 0)
         }
         
         return transform
@@ -233,7 +237,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     /// Present an activity view controller to share the GridView
     private func shareGridView() {
-        guard let imageToShare = convertGridViewToImage() else {
+        guard let imageToShare = Helper.convertToImage(view: gridView) else {
             return
         }
         
@@ -248,22 +252,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(activityViewController, animated: true, completion: nil)
     }
     
-    /// Convert GridView to image
-    private func convertGridViewToImage() -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(gridView.bounds.size, true, 0)
-        
-        gridView.drawHierarchy(in: gridView.bounds, afterScreenUpdates: true)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        
-        UIGraphicsEndImageContext()
-        
-        return image
-    }
-    
     /// Reposition the GridView to its initial place
     private func repositionGridViewToDefaultPlace() {
-        self.gridView.transform = .identity
-        self.gridView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        gridView.transform = .identity
+        gridView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
             self.gridView.transform = .identity
         }, completion: nil)
