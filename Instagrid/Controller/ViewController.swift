@@ -119,7 +119,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         alert.popoverPresentationController?.sourceView = sender
+        alert.popoverPresentationController?.sourceRect = CGRect(x: sender.bounds.midX, y: sender.bounds.midY, width: 0, height: 0)
+        alert.popoverPresentationController?.permittedArrowDirections = .down
+        
         present(alert, animated: true, completion: nil)
+        
         gridViewImageSelected = sender
     }
     
@@ -219,6 +223,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         activityViewController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
             self.repositionGridViewToDefaultPlace()
         }
+        
+        activityViewController.popoverPresentationController?.sourceView = view
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
         
         present(activityViewController, animated: true, completion: nil)
     }
