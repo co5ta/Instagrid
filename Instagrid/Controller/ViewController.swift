@@ -60,15 +60,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NotificationCenter.default.removeObserver(self, name: Notification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
-    /// Change the label indicating the swipe direction to share GridView
+    /// Apply some changes on views when device is rotated
     func deviceRotated() {
+        gridView.setLayout(gridView.layout)
+        updateShareLabel()
+        updateEmptyGridImage()
+    }
+    
+    /// Change the label indicating the swipe direction to share GridView
+    private func updateShareLabel() {
         if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
             swipeToShareLabel.text = "Swipe left to share"
         } else {
             swipeToShareLabel.text = "Swipe up to share"
         }
-        
-        gridView.setLayout(gridView.layout)
+    }
+    
+    /// Change the default image in empty grid images
+    private func updateEmptyGridImage() {
+        for buttonImage in gridImages {
+            if buttonImage.isSelected == false {
+                if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
+                    buttonImage.setImage(#imageLiteral(resourceName: "plus gray"), for: .normal)
+                } else {
+                    buttonImage.setImage(#imageLiteral(resourceName: "plus blue"), for: .normal)
+                }
+            }
+        }
     }
 
     /// Enable the layout change
