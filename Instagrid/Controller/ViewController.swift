@@ -76,15 +76,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: Notification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
     /// Apply some changes on views when device is rotated
-    func deviceRotated() {
+    @objc func deviceRotated() {
         gridView.setLayout(gridView.layout)
         updateShareLabel()
         updateEmptyGridImage()
@@ -168,7 +168,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     /// Add source to the image picker where user can choose a photo
-    private func addSource(title: String, imagePicker: UIImagePickerController, sourceType: UIImagePickerControllerSourceType, alert: UIAlertController) {
+    private func addSource(title: String, imagePicker: UIImagePickerController, sourceType: UIImagePickerController.SourceType, alert: UIAlertController) {
         let action = UIAlertAction(title: title, style: .default) { (action) in
             imagePicker.sourceType = sourceType
             self.present(imagePicker, animated: true, completion: nil)
@@ -177,9 +177,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         alert.addAction(action)
     }
     
-    /// Put the choosen image to the selected place of the GridView
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.originalImage] as? UIImage else { return }
         
         for buttonImage in gridImages {
             if buttonImage == gridViewImageSelected {
@@ -223,7 +223,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     /// Give to the GridView a suitable translation according to the swipe done
-    private func getGridViewTranslationDirection(swipeDirection: UISwipeGestureRecognizerDirection) -> CGAffineTransform? {
+    private func getGridViewTranslationDirection(swipeDirection: UISwipeGestureRecognizer.Direction) -> CGAffineTransform? {
         var transform: CGAffineTransform? = nil
         
         if swipeDirection == .up && displayIsPortrait {
