@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GridViewController.swift
 //  Instagrid
 //
 //  Created by co5ta on 04/05/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class GridViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     /// The GridView contains images to assemble
     @IBOutlet weak var gridView: GridView!
