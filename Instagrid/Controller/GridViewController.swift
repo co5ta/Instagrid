@@ -199,10 +199,7 @@ extension GridViewController {
     
     /// Reposition the GridView to its initial place
     private func repositionGridViewToDefaultPlace() {
-        gridView.transform = .identity
-        gridView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.6, options: [], animations: {
             self.gridView.transform = .identity
         }, completion: nil)
     }
