@@ -77,7 +77,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="changeLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wer-tp-evQ"/>
+                                    <action selector="layoutButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wer-tp-evQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QT1-Pj-xos" userLabel="Layout 2">
@@ -125,7 +125,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="changeLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="26b-Ln-tRe"/>
+                                    <action selector="layoutButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="26b-Ln-tRe"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99b-hP-xt8" customClass="GridView" customModule="Instagrid" customModuleProvider="target">
@@ -162,7 +162,7 @@
                                         <color key="backgroundColor" red="0.94107431173324585" green="0.94123536348342896" blue="0.94106405973434448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="plus blue"/>
                                         <connections>
-                                            <action selector="setGridImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p72-ls-7nI"/>
+                                            <action selector="insertImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ydm-cO-bNn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIU-B2-myl" userLabel="Image3">
@@ -170,7 +170,7 @@
                                         <color key="backgroundColor" red="0.9410743117" green="0.94123536350000003" blue="0.94106405969999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="plus blue"/>
                                         <connections>
-                                            <action selector="setGridImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hs9-nd-TlR"/>
+                                            <action selector="insertImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sf5-VG-PwN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTb-9c-cbv" userLabel="Image2">
@@ -178,7 +178,7 @@
                                         <color key="backgroundColor" red="0.94107431173324585" green="0.94123536348342896" blue="0.94106405973434448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="plus blue"/>
                                         <connections>
-                                            <action selector="setGridImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U4o-Ke-zmf"/>
+                                            <action selector="insertImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rmz-l1-cfq"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Alf-rk-Hnl" userLabel="Image1">
@@ -186,7 +186,7 @@
                                         <color key="backgroundColor" red="0.94107431173324585" green="0.94123536348342896" blue="0.94106405973434448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="plus blue"/>
                                         <connections>
-                                            <action selector="setGridImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xu2-UC-QrP"/>
+                                            <action selector="insertImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HRg-4O-xxi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -350,7 +350,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="changeLayout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pra-U4-qTo"/>
+                                    <action selector="layoutButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pra-U4-qTo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -459,7 +459,9 @@
                                 <exclude reference="ha6-EL-4cM"/>
                                 <exclude reference="hi4-12-bQx"/>
                                 <exclude reference="k0Z-j5-FL5"/>
-                                <exclude reference="3bd-0X-V9F"/>
+                                <exclude reference="0hY-ua-sbJ"/>
+                                <exclude reference="aLr-dG-5dX"/>
+                                <exclude reference="ktG-1m-b01"/>
                                 <exclude reference="1UL-y7-uQO"/>
                                 <exclude reference="4f2-WC-vEb"/>
                                 <exclude reference="9X3-TQ-jdt"/>
@@ -468,9 +470,7 @@
                                 <exclude reference="lWe-Hj-C6N"/>
                                 <exclude reference="nH0-jY-Wdt"/>
                                 <exclude reference="nX5-n9-yzb"/>
-                                <exclude reference="aLr-dG-5dX"/>
-                                <exclude reference="ktG-1m-b01"/>
-                                <exclude reference="0hY-ua-sbJ"/>
+                                <exclude reference="3bd-0X-V9F"/>
                                 <exclude reference="LJt-06-6Pv"/>
                                 <exclude reference="NcB-pZ-9XQ"/>
                                 <exclude reference="ShR-mf-Xtd"/>
@@ -523,8 +523,12 @@
                                 <exclude reference="ha6-EL-4cM"/>
                                 <exclude reference="hi4-12-bQx"/>
                                 <include reference="k0Z-j5-FL5"/>
-                                <include reference="3bd-0X-V9F"/>
-                                <exclude reference="r5N-7Q-suO"/>
+                                <include reference="0hY-ua-sbJ"/>
+                                <exclude reference="sOt-IV-nK1"/>
+                                <exclude reference="K6A-LR-cnc"/>
+                                <exclude reference="XFS-Dk-XW3"/>
+                                <include reference="aLr-dG-5dX"/>
+                                <include reference="ktG-1m-b01"/>
                                 <exclude reference="1UL-y7-uQO"/>
                                 <include reference="4f2-WC-vEb"/>
                                 <exclude reference="8VA-3b-zWA"/>
@@ -535,12 +539,8 @@
                                 <exclude reference="dvy-mM-6zA"/>
                                 <include reference="nH0-jY-Wdt"/>
                                 <exclude reference="nX5-n9-yzb"/>
-                                <exclude reference="K6A-LR-cnc"/>
-                                <exclude reference="XFS-Dk-XW3"/>
-                                <include reference="aLr-dG-5dX"/>
-                                <include reference="ktG-1m-b01"/>
-                                <include reference="0hY-ua-sbJ"/>
-                                <exclude reference="sOt-IV-nK1"/>
+                                <include reference="3bd-0X-V9F"/>
+                                <exclude reference="r5N-7Q-suO"/>
                                 <exclude reference="LJt-06-6Pv"/>
                                 <exclude reference="NcB-pZ-9XQ"/>
                                 <exclude reference="ShR-mf-Xtd"/>
