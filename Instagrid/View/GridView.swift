@@ -47,7 +47,7 @@ class GridView: UIView {
     }
 }
 
-// MARK: - Layouts
+// MARK: - Layout styles
 
 extension GridView {
     /// Dispositions that can be taken by the GridView
@@ -145,7 +145,7 @@ extension GridView {
     }
 }
 
-// MARK: - Layer
+// MARK: - Extra features
 
 extension GridView {
     /// Add a shadow behind GrivView
@@ -154,5 +154,14 @@ extension GridView {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.5
         layer.shadowRadius = 4.0
+    }
+    
+    /// Generate an image of the GridView
+    func convertToImage() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0)
+        drawHierarchy(in: bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
 }

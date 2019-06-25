@@ -191,9 +191,7 @@ extension GridViewController {
     
     /// Present an activity view controller to share the GridView
     private func shareGridView() {
-        guard let imageToShare = Helper.convertToImage(view: gridView) else {
-            return
-        }
+        guard let imageToShare = gridView.convertToImage() else { return }
         
         let activityViewController = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = view
