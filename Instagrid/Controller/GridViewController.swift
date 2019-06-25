@@ -36,12 +36,7 @@ class GridViewController: UIViewController {
     /// Image tapped in the GridView
     var imageTapped: UIButton?
     
-    /// Return true if the app is displayed in portrait mode
-    var displayIsPortrait: Bool {
-        return UIScreen.main.bounds.height > UIScreen.main.bounds.width ? true: false
-    }
-    
-    /// Verify if all boxes of the GridView are filled
+    /// Return true if the GridView is filled
     var isFilled: Bool {
         for buttonImage in gridImages where !buttonImage.isSelected {
             guard buttonImage == gridView.image4 else {
@@ -52,6 +47,18 @@ class GridViewController: UIViewController {
             }
         }
         return true
+    }
+    
+    /// Swipe direction required to run share functionnality
+    var swipeDirectionRequired: UISwipeGestureRecognizer.Direction {
+        let isLandscape = UIScreen.main.bounds.height < UIScreen.main.bounds.width ? true: false
+        let isIpad = UIDevice.current.userInterfaceIdiom == .pad ? true : false
+        
+        if (isLandscape && !isIpad) {
+            return .left
+        } else {
+            return .up
+        }
     }
 }
 
@@ -102,13 +109,13 @@ extension GridViewController {
     
     /// Set the share label according to the device orientation
     private func setShareLabel() {
-        let direction = displayIsPortrait ? "up" : "left"
+        let direction = swipeDirectionRequired == .up ?  "up" : "left"
         swipeToShareLabel.text = "Swipe \(direction) to share"
     }
     
     /// Change the default image in empty grid images
     private func setEmptyGridImage() {
-        let emptyImage = displayIsPortrait ? #imageLiteral(resourceName: "plus blue") : #imageLiteral(resourceName: "plus gray")
+        let emptyImage = swipeDirectionRequired == .up ? #imageLiteral(resourceName: "plus blue") : #imageLiteral(resourceName: "plus gray")
         for image in gridImages where !image.isSelected {
             image.setImage(emptyImage, for: .normal)
         }
@@ -163,23 +170,23 @@ extension GridViewController {
         }
     }
     
+    /// Give to the GridView the appropriate translation according to the swipe done
+    private func getGridViewTranslationDirection(swipeDirection: UISwipeGestureRecognizer.Direction) -> CGAffineTransform? {
+        var transform: CGAffineTransform? = nil
+
+        if swipeDirection == .up && swipeDirectionRequired == .up {
+            transform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height * -1)
+        } else if swipeDirection == .left  && swipeDirectionRequired == .left {
+            transform = CGAffineTransform(translationX: UIScreen.main.bounds.width * -1, y: 0)
+        }
+        return transform
+    }
+    
     /// Present an alert when the GridView is not filled
     private func alertGridNotFilled() {
         let alert = UIAlertController(title: "Grid is not filled", message: "Fill the grid to share it", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
-    }
-    
-    /// Give to the GridView the appropriate translation according to the swipe done
-    private func getGridViewTranslationDirection(swipeDirection: UISwipeGestureRecognizer.Direction) -> CGAffineTransform? {
-        var transform: CGAffineTransform? = nil
-
-        if swipeDirection == .up && displayIsPortrait {
-            transform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height * -1)
-        } else if swipeDirection == .left  && !displayIsPortrait {
-            transform = CGAffineTransform(translationX: UIScreen.main.bounds.width * -1, y: 0)
-        }
-        return transform
     }
     
     /// Present an activity view controller to share the GridView
