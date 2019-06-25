@@ -68,9 +68,17 @@
 				22EA1E60209F3E7D008C3F9C /* Model */,
 				22EA1E5F209F3E5E008C3F9C /* View */,
 				22EA1E5E209F3E4B008C3F9C /* Controller */,
-				223C4DFE209C67DF004DEFB4 /* Info.plist */,
 			);
 			path = Instagrid;
+			sourceTree = "<group>";
+		};
+		22955DF722C20C5200EFCCAA /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				22EA1E62209F3EC5008C3F9C /* Delm-Medium.otf */,
+				22EA1E63209F3ECA008C3F9C /* ThirstySoftRegular.otf */,
+			);
+			name = fonts;
 			sourceTree = "<group>";
 		};
 		22EA1E5E209F3E4B008C3F9C /* Controller */ = {
@@ -105,8 +113,8 @@
 			children = (
 				223C4DF2209C67DF004DEFB4 /* AppDelegate.swift */,
 				223C4DF9209C67DF004DEFB4 /* Assets.xcassets */,
-				22EA1E62209F3EC5008C3F9C /* Delm-Medium.otf */,
-				22EA1E63209F3ECA008C3F9C /* ThirstySoftRegular.otf */,
+				223C4DFE209C67DF004DEFB4 /* Info.plist */,
+				22955DF722C20C5200EFCCAA /* fonts */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -334,7 +342,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PQ32JTG8M8;
-				INFOPLIST_FILE = Instagrid/Info.plist;
+				INFOPLIST_FILE = "Instagrid/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.co5ta.Instagrid;
@@ -353,7 +361,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PQ32JTG8M8;
-				INFOPLIST_FILE = Instagrid/Info.plist;
+				INFOPLIST_FILE = "Instagrid/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.co5ta.Instagrid;
