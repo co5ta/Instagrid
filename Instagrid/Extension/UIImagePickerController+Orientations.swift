@@ -1,5 +1,5 @@
 //
-//  Grid.swift
+//  UIImagePickerController+Orientations.swift
 //  Instagrid
 //
 //  Created by co5ta on 19/05/2018.
