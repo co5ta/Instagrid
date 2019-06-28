@@ -97,6 +97,7 @@ extension GridViewController {
     
     // Before the view disappear
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver( self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
@@ -186,7 +187,7 @@ extension GridViewController {
     private func alertGridNotFilled() {
         let alert = UIAlertController(title: "Grid is not filled", message: "Fill the grid to share it", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
     
     /// Present an activity view controller to share the GridView
@@ -199,14 +200,14 @@ extension GridViewController {
         activityViewController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
             self.repositionGridViewToDefaultPlace()
         }
-        present(activityViewController, animated: true, completion: nil)
+        present(activityViewController, animated: true)
     }
     
     /// Reposition the GridView to its initial place
     private func repositionGridViewToDefaultPlace() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.6, options: [], animations: {
             self.gridView.transform = .identity
-        }, completion: nil)
+        })
     }
     
 }
@@ -224,7 +225,7 @@ extension GridViewController: UIImagePickerControllerDelegate, UINavigationContr
             imageTapped = nil
             break
         }
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     /// Insert the image choosen by the user in the GridView
@@ -247,7 +248,7 @@ extension GridViewController: UIImagePickerControllerDelegate, UINavigationContr
         alert.popoverPresentationController?.permittedArrowDirections = .down
         alert.popoverPresentationController?.sourceRect = CGRect(x: sender.bounds.midX, y: sender.bounds.midY, width: 0, height: 0)
         
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
         imageTapped = sender
     }
     
@@ -262,7 +263,7 @@ extension GridViewController: UIImagePickerControllerDelegate, UINavigationContr
     private func addSourceType(title: String, imagePicker: UIImagePickerController, sourceType: UIImagePickerController.SourceType, alert: UIAlertController) {
         alert.addAction(UIAlertAction(title: title, style: .default, handler: { (action) in
             imagePicker.sourceType = sourceType
-            self.present(imagePicker, animated: true, completion: nil)
+            self.present(imagePicker, animated: true)
         }))
     }
 }
