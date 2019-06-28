@@ -62,7 +62,7 @@ class GridViewController: UIViewController {
     }
 }
 
-// MARK: - Init
+// MARK: - Lyfe cycle
 
 extension GridViewController {
     // Init view
@@ -84,11 +84,7 @@ extension GridViewController {
         gridView.addGestureRecognizer(swipeLeftGestureRecognizer)
         swipeLeftGestureRecognizer.direction = .left
     }
-}
-
-// MARK: - Orientation
-
-extension GridViewController {
+    
     // Before the view appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -100,7 +96,11 @@ extension GridViewController {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver( self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
-    
+}
+
+// MARK: - Orientation
+
+extension GridViewController {
     /// Update scene on device rotation
     @objc func deviceRotated() {
         gridView.setLayout(gridView.layout)
