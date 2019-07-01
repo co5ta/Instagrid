@@ -90,7 +90,6 @@
 		22EA1E5F209F3E5E008C3F9C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				223C4DFB209C67DF004DEFB4 /* LaunchScreen.storyboard */,
 				223C4DF6209C67DF004DEFB4 /* Main.storyboard */,
 				22EA1E68209F8691008C3F9C /* GridView.swift */,
 			);
@@ -108,6 +107,7 @@
 		22EA1E61209F3EA2008C3F9C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				223C4DFB209C67DF004DEFB4 /* LaunchScreen.storyboard */,
 				223C4DF2209C67DF004DEFB4 /* AppDelegate.swift */,
 				223C4DF9209C67DF004DEFB4 /* Assets.xcassets */,
 				223C4DFE209C67DF004DEFB4 /* Info.plist */,
