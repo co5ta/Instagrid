@@ -156,62 +156,6 @@ extension GridViewController {
     }
 }
 
-// MARK: - Share
-
-extension GridViewController {
-    /// Swipe the GridView
-    @objc private func swipeGridView(_ sender: UISwipeGestureRecognizer) {
-        guard let transform = getGridViewTranslationDirection(swipeDirection: sender.direction) else { return }
-        guard isFilled else { alertGridNotFilled(); return }
-        
-        UIView.animate(withDuration: 0.5, animations: { self.gridView.transform = transform }) { (success) in
-            if success {
-                self.shareGridView()
-            }
-        }
-    }
-    
-    /// Give to the GridView the appropriate translation according to the swipe done
-    private func getGridViewTranslationDirection(swipeDirection: UISwipeGestureRecognizer.Direction) -> CGAffineTransform? {
-        var transform: CGAffineTransform? = nil
-
-        if swipeDirection == .up && swipeDirectionRequired == .up {
-            transform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height * -1)
-        } else if swipeDirection == .left  && swipeDirectionRequired == .left {
-            transform = CGAffineTransform(translationX: UIScreen.main.bounds.width * -1, y: 0)
-        }
-        return transform
-    }
-    
-    /// Present an alert when the GridView is not filled
-    private func alertGridNotFilled() {
-        let alert = UIAlertController(title: "Grid is not filled", message: "Fill the grid to share it", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        present(alert, animated: true)
-    }
-    
-    /// Present an activity view controller to share the GridView
-    private func shareGridView() {
-        guard let imageToShare = gridView.convertToImage() else { return }
-        
-        let activityViewController = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = view
-        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
-        activityViewController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
-            self.repositionGridViewToDefaultPlace()
-        }
-        present(activityViewController, animated: true)
-    }
-    
-    /// Reposition the GridView to its initial place
-    private func repositionGridViewToDefaultPlace() {
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.6, options: [], animations: {
-            self.gridView.transform = .identity
-        })
-    }
-    
-}
-
 // MARK: - ImagePicker
 
 extension GridViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -265,5 +209,70 @@ extension GridViewController: UIImagePickerControllerDelegate, UINavigationContr
             imagePicker.sourceType = sourceType
             self.present(imagePicker, animated: true)
         }))
+    }
+}
+
+// MARK: - Share
+
+extension GridViewController {
+    /// Swipe the GridView
+    @objc private func swipeGridView(_ sender: UISwipeGestureRecognizer) {
+        guard let transform = getGridViewTranslationDirection(swipeDirection: sender.direction) else { return }
+        guard isFilled else {
+            presentAlert(title: "Grid is not filled", message: "Fill the grid to share it")
+            return }
+        
+        UIView.animate(withDuration: 0.5, animations: { self.gridView.transform = transform }) { (success) in
+            if success {
+                self.shareGridView()
+            }
+        }
+    }
+    
+    /// Give to the GridView the appropriate translation according to the swipe done
+    private func getGridViewTranslationDirection(swipeDirection: UISwipeGestureRecognizer.Direction) -> CGAffineTransform? {
+        var transform: CGAffineTransform? = nil
+        
+        if swipeDirection == .up && swipeDirectionRequired == .up {
+            transform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height * -1)
+        } else if swipeDirection == .left  && swipeDirectionRequired == .left {
+            transform = CGAffineTransform(translationX: UIScreen.main.bounds.width * -1, y: 0)
+        }
+        return transform
+    }
+    
+    /// Present an activity view controller to share the GridView
+    private func shareGridView() {
+        guard let imageToShare = gridView.convertToImage() else {
+            presentAlert(title: "Error", message: "Can't convert grill to image")
+            return
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = view
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
+        activityViewController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+            self.repositionGridViewToDefaultPlace()
+        }
+        present(activityViewController, animated: true)
+    }
+    
+    /// Present an alert
+    private func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+    
+    /// Reposition the GridView to its initial place
+    private func repositionGridViewToDefaultPlace() {
+        UIView.animate(
+            withDuration: 0.7,
+            delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0.6,
+            options: [],
+            animations: { self.gridView.transform = .identity }
+        )
     }
 }
