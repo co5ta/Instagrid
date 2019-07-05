@@ -39,10 +39,13 @@ class GridViewController: UIViewController {
     /// Return true if the GridView is filled
     var isFilled: Bool {
         for buttonImage in gridImages where !buttonImage.isSelected {
-            guard buttonImage == gridView.image4 else {
+            if buttonImage == gridView.image1 || buttonImage == gridView.image3 {
                 return false
             }
-            guard gridView.layout != .fourSquare else {
+            if buttonImage == gridView.image2 && gridView.layout != .oneRectangleTwoSquare {
+                return false
+            }
+            if buttonImage == gridView.image4 && gridView.layout != .twoSquareOneRectangle {
                 return false
             }
         }
