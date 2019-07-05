@@ -242,7 +242,7 @@ extension GridViewController {
     
     /// Present an activity view controller to share the GridView
     private func shareGridView() {
-        guard let imageToShare = gridView.convertToImage() else {
+        guard let imageToShare = convertToImage() else {
             presentAlert(title: "Error", message: "Can't convert grill to image")
             return
         }
@@ -261,6 +261,15 @@ extension GridViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alert, animated: true)
+    }
+    
+    /// Generate an image of the GridView
+    private func convertToImage() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(gridView.bounds.size, true, 0)
+        gridView.drawHierarchy(in: gridView.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
     
     /// Reposition the GridView to its initial place

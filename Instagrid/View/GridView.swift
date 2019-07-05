@@ -95,13 +95,4 @@ extension GridView {
         layer.shadowOpacity = 0.5
         layer.shadowRadius = 4.0
     }
-    
-    /// Generate an image of the GridView
-    func convertToImage() -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0)
-        drawHierarchy(in: bounds, afterScreenUpdates: true)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
-    }
 }
