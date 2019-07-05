@@ -103,7 +103,6 @@ extension GridViewController {
 extension GridViewController {
     /// Update scene on device rotation
     @objc func deviceRotated() {
-        gridView.setLayout(gridView.layout)
         setShareLabel()
         setEmptyGridImage()
     }
