@@ -120,11 +120,9 @@
                                 <color key="backgroundColor" red="0.015775226056575775" green="0.3959292471408844" blue="0.60368543863296509" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="318" id="4TK-pI-98N"/>
+                                    <constraint firstAttribute="width" constant="318" id="4TK-pI-98N"/>
                                     <constraint firstItem="8O4-gr-z1B" firstAttribute="leading" secondItem="99b-hP-xt8" secondAttribute="leading" constant="14" id="Lga-AT-VLx"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="318" id="OQo-P2-mdf"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="245" id="TvV-GF-8Ye"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="245" id="W4H-g3-juz"/>
+                                    <constraint firstAttribute="width" constant="245" id="TvV-GF-8Ye"/>
                                     <constraint firstAttribute="width" constant="400" id="Xho-aM-Xtq">
                                         <variation key="heightClass=regular-widthClass=regular" constant="450"/>
                                     </constraint>
@@ -136,22 +134,18 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="4TK-pI-98N"/>
-                                        <exclude reference="OQo-P2-mdf"/>
                                         <exclude reference="TvV-GF-8Ye"/>
-                                        <exclude reference="W4H-g3-juz"/>
                                         <exclude reference="Xho-aM-Xtq"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="TvV-GF-8Ye"/>
-                                        <include reference="W4H-g3-juz"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=regular">
                                     <mask key="constraints">
                                         <include reference="4TK-pI-98N"/>
-                                        <include reference="OQo-P2-mdf"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
