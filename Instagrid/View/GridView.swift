@@ -70,8 +70,8 @@ extension GridView {
     private func show(_ image: UIButton) {
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: [], animations: {
             image.isHidden = false
-            image.superview?.layoutIfNeeded()
             image.transform = .identity
+            image.superview?.layoutIfNeeded()
         })
     }
     
@@ -80,7 +80,9 @@ extension GridView {
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: [], animations: {
             image.isHidden = true
         }, completion: { success in
-            image.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+            if (success && image.isHidden) {
+                image.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+            }
         })
     }
 }

@@ -130,8 +130,10 @@ extension GridViewController {
 extension GridViewController {
     /// Enable the layout change when
     @IBAction func layoutButtonTapped(_ sender: UIButton) {
-        unselectLayoutButtons()
-        selectNewLayout(sender)
+        if !sender.isSelected {
+            unselectLayoutButtons()
+            selectNewLayout(sender)
+        }
     }
     
     /// Unselect all buttons
